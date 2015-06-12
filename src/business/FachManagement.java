@@ -1,15 +1,15 @@
-﻿package persistence;
+﻿package business;
 
 import java.util.ArrayList;
 
 import models.Fach;
 import models.Note;
-import business.FachDAO;
+import persistence.FachDAO;
 
-public class FachMgmt {
+public class FachManagement {
 	private ArrayList<Fach> fach;
 	private FachDAO DAOF;
-	
+
 	public boolean addFach(Fach f) {
 		return true;
 	}

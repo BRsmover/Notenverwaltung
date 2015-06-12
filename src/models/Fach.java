@@ -13,7 +13,7 @@ public class Fach {
 	private String name;
 	private String kuerzel;
 	private ArrayList<Note> note;
-	
+
 	// Konstruktor Klasse Fach
 	public Fach(int fachId, String name, String kuerzel, ArrayList<Note> note) {
 		this.fachId = fachId;

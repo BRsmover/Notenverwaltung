@@ -1,8 +1,5 @@
-﻿package business;
+﻿package persistence;
 
-import java.util.ArrayList;
-
-import models.Fach;
 import models.Schueler;
 
 public class SchuelerDAO {
@@ -19,7 +16,7 @@ public class SchuelerDAO {
 	// Get all
 	public Schueler getAllSchueler() {
 		// Date-Wert? Format?
-		Schueler s = new Schueler(1, "Meier", "Hans", "Basel, Marktplatz 2", null, "0618498374", new ArrayList<Fach>());
+		Schueler s = new Schueler(1, "Meier", "Hans", "Basel, Marktplatz 2", null, "0618498374");
 		return s;
 	}
 }

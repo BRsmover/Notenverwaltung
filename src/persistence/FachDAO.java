@@ -1,4 +1,4 @@
-﻿package business;
+﻿package persistence;
 
 import java.util.ArrayList;
 

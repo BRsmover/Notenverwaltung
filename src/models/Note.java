@@ -27,5 +27,4 @@ public class Note {
 	public void setWert(double wert) {
 		this.wert = wert;
 	}
-
 }

@@ -1,14 +1,14 @@
-﻿package persistence;
+﻿package business;
 
 import java.util.ArrayList;
 
 import models.Note;
-import business.NoteDAO;
+import persistence.NoteDAO;
 
-public class NoteMgmt {
+public class NoteManagement {
 	private ArrayList<Note> note;
 	private NoteDAO DAON;
-	
+
 	public boolean addNote(Note n) {
 		return true;
 	}
