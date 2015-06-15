@@ -1,9 +1,6 @@
-﻿package business;
+﻿package old_stuff;
 
 import java.util.ArrayList;
-
-import models.Note;
-import persistence.NoteDAO;
 
 public class NoteManagement {
 	private ArrayList<Note> note;

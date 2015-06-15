@@ -1,6 +1,5 @@
-﻿package persistence;
+﻿package old_stuff;
 
-import models.Schueler;
 
 public class SchuelerDAO {
 	// Speichern

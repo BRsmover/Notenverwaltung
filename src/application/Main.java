@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -29,6 +30,9 @@ public class Main extends Application {
 
 			// Show the scene containing the root layout.
 			Scene scene = new Scene(rootLayout);
+			// Get icon for application
+			primaryStage.getIcons().add(new Image("file:resources/images/logo.png"));
+			// Showing application
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {
@@ -36,11 +40,11 @@ public class Main extends Application {
 		}
 	}
 
-	public void callAdding() {
+	public void callEditing() {
 		try {
-			// Load Adding.fxml
+			// Load Editing.fxml
 			FXMLLoader loadAdding = new FXMLLoader();
-			loadAdding.setLocation(Main.class.getResource("Adding.fxml"));
+			loadAdding.setLocation(Main.class.getResource("Editing.fxml"));
 			BorderPane addLayout = (BorderPane) loadAdding.load();
 
 			Scene addScene = new Scene(addLayout);

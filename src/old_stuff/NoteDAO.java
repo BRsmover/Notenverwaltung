@@ -1,6 +1,5 @@
-﻿package persistence;
+﻿package old_stuff;
 
-import models.Note;
 
 public class NoteDAO {
 	// Speichern

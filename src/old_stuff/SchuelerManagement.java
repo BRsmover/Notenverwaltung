@@ -1,9 +1,6 @@
-﻿package business;
+﻿package old_stuff;
 
 import java.util.ArrayList;
-
-import models.Schueler;
-import persistence.SchuelerDAO;
 
 public class SchuelerManagement {
 	private ArrayList<Schueler> schueler;

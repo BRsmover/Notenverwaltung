@@ -1,9 +1,6 @@
-﻿package persistence;
+﻿package old_stuff;
 
 import java.util.ArrayList;
-
-import models.Fach;
-import models.Note;
 
 public class FachDAO {
 	// Speichern

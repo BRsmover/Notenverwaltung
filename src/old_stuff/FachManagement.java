@@ -1,10 +1,6 @@
-﻿package business;
+﻿package old_stuff;
 
 import java.util.ArrayList;
-
-import models.Fach;
-import models.Note;
-import persistence.FachDAO;
 
 public class FachManagement {
 	private ArrayList<Fach> fach;
