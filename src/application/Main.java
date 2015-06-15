@@ -3,6 +3,7 @@
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -33,5 +34,25 @@ public class Main extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void callAdding() {
+		try {
+			// Load Adding.fxml
+			FXMLLoader loadAdding = new FXMLLoader();
+			loadAdding.setLocation(Main.class.getResource("Adding.fxml"));
+			BorderPane addLayout = (BorderPane) loadAdding.load();
+
+			Scene addScene = new Scene(addLayout);
+			Stage addStage = new Stage();
+			addStage.setScene(addScene);
+			addStage.show();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void close() {
+		Platform.exit();
 	}
 }
