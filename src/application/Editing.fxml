@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="business.EintragManagement.java">
    <center>
       <GridPane maxHeight="200.0" maxWidth="200.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -60,12 +60,12 @@
    <bottom>
       <FlowPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Speichern">
+            <Button mnemonicParsing="false" onAction="#saving" text="Speichern">
                <FlowPane.margin>
                   <Insets left="300.0" top="10.0" />
                </FlowPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Abbrechen">
+            <Button mnemonicParsing="false" onAction="#cancel" text="Abbrechen">
                <FlowPane.margin>
                   <Insets left="30.0" top="10.0" />
                </FlowPane.margin>

@@ -1,5 +1,6 @@
 package business;
 
+import javafx.application.Platform;
 import models.Eintrag;
 
 /**
@@ -19,7 +20,12 @@ public class EintragManagement {
 	}
 
 	// Calculate average
-		public double average(double eins, double zwei, double drei) {
-			return 0;
-		}	
+	public double average(double eins, double zwei, double drei) {
+		return 0;
+	}
+
+	// Cancel button
+	public void cancel() {
+		Platform.exit();
+	}
 }
