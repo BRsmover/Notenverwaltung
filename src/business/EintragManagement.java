@@ -1,7 +1,11 @@
 package business;
 
+import java.util.ArrayList;
+
 import javafx.application.Platform;
+import models.Eintraege;
 import models.Eintrag;
+import persistence.EintragDAO;
 
 /**
  * 
@@ -9,9 +13,28 @@ import models.Eintrag;
  *
  */
 public class EintragManagement {
+	
+	EintragDAO Daten;
+	Eintraege Eintraege;
+	
+	public EintragManagement(){
+		EintragDAO Daten = new EintragDAO();
+		
+		
+		Eintraege = Daten.getAllEintraege();
+	}
+	
+	//Speichert in XML
+	public boolean saveToFile(Eintraege ToFile){
+		boolean geht = Daten.saving(ToFile);
+		return geht;
+	}
+	
 	// Add entry
-	public boolean saving(Eintrag e) {
-		return true;
+	public Eintraege saving(Eintrag e) {
+		Eintraege.getEintraege().add(e);
+		
+		return Eintraege;
 	}
 
 	// Delete entry
