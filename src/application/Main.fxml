@@ -13,7 +13,7 @@
           <Menu mnemonicParsing="false" text="Datei">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#callEditing" text="Eintrag bearbeiten" />
-                  <MenuItem mnemonicParsing="false" text="Daten Datei speichern" />
+                  <MenuItem mnemonicParsing="false" text="Daten in Datei speichern" />
               <MenuItem mnemonicParsing="false" onAction="#close" text="Beenden" />
             </items>
           </Menu>
@@ -23,7 +23,7 @@
    <bottom>
       <FlowPane maxHeight="50.0" maxWidth="601.0" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Daten Datei Speichern">
+            <Button mnemonicParsing="false" onAction="#callSaveToFile" text="Daten in Datei Speichern">
                <FlowPane.margin>
                   <Insets left="10.0" top="10.0" />
                </FlowPane.margin>

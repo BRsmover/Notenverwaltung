@@ -2,6 +2,7 @@
 
 import java.io.IOException;
 
+import models.Eintraege;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import models.Eintrag;
+import business.EintragManagement;
 
 /**
  * 
@@ -18,6 +18,8 @@ import models.Eintrag;
  *
  */
 public class Main extends Application {
+	EintragManagement logik;
+
 	public static void main (String[] args) {
 		launch(args);
 	}
@@ -58,7 +60,13 @@ public class Main extends Application {
 		}
 	}
 
+	// Close program
 	public void close() {
 		Platform.exit();
+	}
+
+	// Call saveToFile method in Management
+	public void callSaveToFile(Eintraege ToFile) {
+		logik.saveToFile(ToFile);
 	}
 }
