@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Overview">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -30,7 +30,12 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#callEditing" text="Hinzufügen/ Ändern">
                <FlowPane.margin>
-                  <Insets left="220.0" top="10.0" />
+                  <Insets left="145.0" top="10.0" />
+               </FlowPane.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="Durchschnitt">
+               <FlowPane.margin>
+                  <Insets left="10.0" top="10.0" />
                </FlowPane.margin>
             </Button>
             <Button mnemonicParsing="false" text="Löschen">
@@ -46,7 +51,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="323.0" prefWidth="600.0">
                <children>
-                  <TableView prefHeight="323.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableview" prefHeight="323.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn prefWidth="100.0" text="Vorname" />
                       <TableColumn prefWidth="100.0" text="Name" />

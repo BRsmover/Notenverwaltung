@@ -9,14 +9,15 @@ import persistence.EintragDAO;
  * @author Simon Fritschi
  *
  */
+// Class EintragManagement
 public class EintragManagement {
 
 	EintragDAO Daten;
 	Eintraege Eintraege;
 
+	// Constructor
 	public EintragManagement() {
 		EintragDAO Daten = new EintragDAO();
-
 		Eintraege = Daten.getAllEintraege();
 	}
 
@@ -26,10 +27,14 @@ public class EintragManagement {
 		return geht;
 	}
 
+	// Get Eintraege
+	public Eintraege getEintraege() {
+		return Eintraege;
+	}
+
 	// Add entry
 	public Eintraege saving(Eintrag e) {
 		Eintraege.getEintraege().add(e);
-
 		return Eintraege;
 	}
 
