@@ -1,8 +1,5 @@
 package business;
 
-import java.util.ArrayList;
-
-import javafx.application.Platform;
 import models.Eintraege;
 import models.Eintrag;
 import persistence.EintragDAO;
@@ -44,10 +41,5 @@ public class EintragManagement {
 	// Calculate average
 	public double average(double eins, double zwei, double drei) {
 		return 0;
-	}
-
-	// Cancel button
-	public void cancel() {
-		Platform.exit();
 	}
 }

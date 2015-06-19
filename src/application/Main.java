@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import business.EintragManagement;
 
@@ -17,13 +18,16 @@ import business.EintragManagement;
  * @author Benjamin Jenni
  *
  */
+// Main method
 public class Main extends Application {
 	EintragManagement logik;
 
+	// Start application
 	public static void main (String[] args) {
 		launch(args);
 	}
 
+	// Define application
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -44,6 +48,7 @@ public class Main extends Application {
 		}
 	}
 
+	// Open the editing window
 	public void callEditing() {
 		try {
 			// Load Editing.fxml
@@ -53,6 +58,9 @@ public class Main extends Application {
 
 			Scene addScene = new Scene(addLayout);
 			Stage addStage = new Stage();
+			addStage.setTitle("Bearbeiten");
+			addStage.getIcons().add(new Image("file:resources/images/logo.png"));
+			addStage.initModality(Modality.APPLICATION_MODAL);
 			addStage.setScene(addScene);
 			addStage.show();
 		} catch(IOException e) {
@@ -66,7 +74,7 @@ public class Main extends Application {
 	}
 
 	// Call saveToFile method in Management
-	public void callSaveToFile(Eintraege ToFile) {
-		logik.saveToFile(ToFile);
+	public void callSaveToFile() {
+		logik.saveToFile(new Eintraege());
 	}
 }

@@ -13,6 +13,9 @@ public class Eintrag {
 	private double noteZwei;
 	private double noteDrei;
 
+	public Eintrag() {
+	}
+
 	public Eintrag(String vorname, String name, String fach, double noteEins, double noteZwei, double noteDrei) {
 		this.vorname = vorname;
 		this.name = name;
