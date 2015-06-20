@@ -1,13 +1,14 @@
 package persistence;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
-import models.Eintraege;
 import models.Eintrag;
 
 /**
@@ -17,49 +18,46 @@ import models.Eintrag;
  */
 public class EintragDAO {
 
-	private static final String eintrag_XML = "EintragXML.xml";
-	// ArrayList<Eintrag> eintragList = new ArrayList<>();
-	static Eintraege Liste = new Eintraege();
+	private static final String EINTRAGE_CSV = "eintrage.csv";
 
-	public EintragDAO() {
-
-	}
-
-	// Saving to XML
-	public boolean saving(Eintraege eingabe) {
-
-		this.Liste = eingabe;
-
+	// Saving to CSV file
+	public boolean saveAllEintraege(ArrayList<Eintrag> eintraege) {
 		try {
+			File file = new File(EINTRAGE_CSV);
+			file.createNewFile();
+			FileOutputStream outputstream = new FileOutputStream(file);
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputstream));
+			for (Eintrag eintrag : eintraege) {
+				String query = eintrag.getVorname() + ";" + eintrag.getName() + ";" + eintrag.getFach() + ";" + eintrag.getNoteEins() + ";" + eintrag.getNoteZwei() + ";" + eintrag.getNoteDrei();
+				writer.write(query);
+				writer.newLine();
+			}
+			writer.close();
+			return true;
 
-			JAXBContext context = JAXBContext.newInstance(Eintrag.class);
-			Marshaller mEintrag = context.createMarshaller();
-			mEintrag.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-			// Write to File
-			mEintrag.marshal(Liste, new File(eintrag_XML));
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			return false;
 		}
-
-		return true;
 	}
 
-	public Eintraege getAllEintraege() {
-
+	public ArrayList<Eintrag> getAllEintraege() {
 		try {
-			JAXBContext context = JAXBContext.newInstance(Eintrag.class);
-			Unmarshaller umEintrag = context.createUnmarshaller();
-			Liste = (Eintraege) umEintrag.unmarshal(new File(eintrag_XML));
-
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
+			File file = new File(EINTRAGE_CSV);
+			file.createNewFile();
+			ArrayList<Eintrag> eintraege = new ArrayList<Eintrag>();
+			FileInputStream inputstream = new FileInputStream(file);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				String[] items = line.split(";");
+				eintraege.add(new Eintrag(items[0], items[1], items[2], Double.parseDouble(items[3]), Double.parseDouble(items[4]), Double.parseDouble(items[5])));
+			}
+			reader.close();
+			return eintraege;
+		} catch (Exception e) {
 			e.printStackTrace();
+			return new ArrayList<Eintrag>();
 		}
-
-		return Liste;
 	}
-
 }

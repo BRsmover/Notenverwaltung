@@ -12,13 +12,29 @@ public class Fach {
 	private int fachId;
 	private String name;
 	private String kuerzel;
-	private ArrayList<Note> note;
+	private ArrayList<Note> noten;
 
 	// Konstruktor Klasse Fach
-	public Fach(int fachId, String name, String kuerzel, ArrayList<Note> note) {
+	public Fach(int fachId, String name, String kuerzel, ArrayList<Note> noten) {
 		this.fachId = fachId;
 		this.name = name;
 		this.kuerzel = kuerzel;
-		this.note = note;
+		this.noten = noten;
+	}
+
+	public int getFachId() {
+		return fachId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getKuerzel() {
+		return kuerzel;
+	}
+
+	public ArrayList<Note> getNoten() {
+		return noten;
 	}
 }
