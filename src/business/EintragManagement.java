@@ -1,6 +1,7 @@
 package business;
 
-import models.Eintraege;
+import java.util.ArrayList;
+
 import models.Eintrag;
 import persistence.EintragDAO;
 
@@ -12,35 +13,43 @@ import persistence.EintragDAO;
 // Class EintragManagement
 public class EintragManagement {
 
+	static EintragManagement Management;
 	EintragDAO Daten;
-	Eintraege Eintraege;
+	ArrayList<Eintrag> Eintraege;
 
-	// Constructor
-	public EintragManagement() {
-		EintragDAO Daten = new EintragDAO();
+	// Protected constructor
+	protected EintragManagement() {
+		Daten = new EintragDAO();
 		Eintraege = Daten.getAllEintraege();
 	}
 
-	// Speichert in XML
-	public boolean saveToFile(Eintraege ToFile) {
-		boolean geht = Daten.saving(ToFile);
-		return geht;
+	// Get management instance
+	public static EintragManagement getInstance() {
+		if(Management == null) {
+			Management = new EintragManagement();
+		}
+		return Management;
 	}
 
 	// Get Eintraege
-	public Eintraege getEintraege() {
-		return Eintraege;
+	public ArrayList<Eintrag> getEintraege() {
+		return Daten.getAllEintraege();
 	}
 
 	// Add entry
-	public Eintraege saving(Eintrag e) {
-		Eintraege.getEintraege().add(e);
-		return Eintraege;
+	public void addEintrag(Eintrag eintrag) {
+		Eintraege.add(eintrag);
 	}
 
 	// Delete entry
-	public boolean deleting(Eintrag e) {
+	public boolean deleting(Eintrag eintrag) {
+		Eintraege.remove(eintrag);
 		return true;
+	}
+	
+	// Save all items
+	public boolean saveEintraege() {
+		return Daten.saveAllEintraege(Eintraege);
 	}
 
 	// Calculate average

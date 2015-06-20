@@ -6,7 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import models.Eintrag;
-import business.EintragManagement;
 
 public class Editing {
 	@FXML
@@ -39,7 +38,7 @@ public class Editing {
 
 	// Save button set on action
 	@FXML
-	public void actionSave() {
+	public void actionSave(ActionEvent event) {
 		Eintrag eintrag = new Eintrag();
 		eintrag.setVorname(vorname.getText());
 		eintrag.setName(name.getText());
@@ -58,8 +57,7 @@ public class Editing {
 			eintrag.setNoteDrei(third);
 		}
 
-		EintragManagement management = new EintragManagement();
-		management.saving(eintrag);
+		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
 	// Cancel button set on action
