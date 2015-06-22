@@ -113,4 +113,27 @@ public class Overview {
 	public void actionClose() {
 		Platform.exit();
 	}
+
+	public void actionHelp() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Hilfe");
+		alert.setHeaderText("Hilfe");
+		alert.setContentText("Um einen Wert hinzuzufügen klicken Sie unten auf >Hinzufügen/Bearbeiten<."
+				+ "\r\nUm einen bestehenden Wert zu bearbeiten, wählen Sie ihn an und anschliessend"
+				+ " klicken Sie auf >Hinzufügen/Bearbeiten<."
+				+ "\r\nUm einen Wert zu löschen wählen Sie ihn an und anschliessen klicken Sie auf >Löschen<."
+				+ "\r\nFalls Sie mehr über das Programm erfahren möchten, klicken Sie oben auf >Über uns<.");
+		alert.showAndWait();
+	}
+
+	public void actionAbout() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Über uns");
+		alert.setHeaderText("Über uns");
+		alert.setContentText("Version: Notenverwaltung 1.0\r\n\r\n" + "Autoren: Simon Fritschi, Benjamin Jenni\r\n\r\n" + "Information: Mit "
+				+ "unserer Notenverwaltung können Sie auf eine einfache Art und Weise Ihre eigenen Noten oder die Ihrer Schüler "
+				+ "verwalten.\r\nDie Notenverwaltung wurde im Rahmen eines Kompetenznachweises im Modul 226 an der Gewerblich "
+				+ "industriellen Berufsschulen Muttenz programmiert.");
+		alert.showAndWait();
+	}
 }
