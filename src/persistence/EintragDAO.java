@@ -13,7 +13,8 @@ import javafx.collections.ObservableList;
 import models.Eintrag;
 
 /**
- * 
+ * This is our data class. We use it to save into the
+ * csv and to return all entries.
  * @author Simon Fritschi
  *
  */
@@ -21,6 +22,12 @@ public class EintragDAO {
 
 	private static final String EINTRAGE_CSV = "eintraege.csv";
 
+	/**
+	 * In here we save into the csv.
+	 * @author Simon Fritschi
+	 * @param eintraege
+	 * @throws Exception
+	 */
 	// Saving to CSV file
 	public void saveAllEintraege(ObservableList<Eintrag> eintraege) throws Exception {
 		File file = new File(EINTRAGE_CSV);
@@ -35,6 +42,12 @@ public class EintragDAO {
 		writer.close();
 	}
 
+	/**
+	 * Returns all our entries from the csv.
+	 * @author Simon Fritschi
+	 * @return
+	 * @throws Exception
+	 */
 	public ObservableList<Eintrag> getAllEintraege() throws Exception {
 		File file = new File(EINTRAGE_CSV);
 		file.createNewFile();

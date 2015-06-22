@@ -6,18 +6,20 @@ import models.Eintrag;
 import persistence.EintragDAO;
 
 /**
- * 
+ * This is the logic of our application.
+ * Here we create our singleton Management and our observablelist.
  * @author Simon Fritschi
- *
  */
-// Class EintragManagement
 public class EintragManagement {
 
 	static EintragManagement Management;
 	ObservableList<Eintrag> Eintraege;
 	EintragDAO Daten;
 
-	// Protected constructor
+	/**
+	 * This is the constructor. As you can see this is where we get all the entries.
+	 * @author Simon Fritschi
+	 */
 	protected EintragManagement() {
 		Daten = new EintragDAO();
 		try {
@@ -27,7 +29,11 @@ public class EintragManagement {
 		}
 	}
 
-	// Get management instance
+	/**
+	 * Here we get the instance of our singleton. If it is null we create one.
+	 * @author Simon Fritschi
+	 * @return Management
+	 */
 	public static EintragManagement getInstance() {
 		if(Management == null) {
 			Management = new EintragManagement();
@@ -35,28 +41,51 @@ public class EintragManagement {
 		return Management;
 	}
 
-	// Get Eintraege
+	/**
+	 * Getting the entries of the observable list.
+	 * @author Simon Fritschi
+	 * @return
+	 */
 	public ObservableList<Eintrag> getEintraege() {
 		return Eintraege;
 	}
 
-	// Add an Eintrag
+	/**
+	 * Adding an entry to the observable list.
+	 * @author Simon Fritschi
+	 * @param eintrag
+	 */
 	public void addEintrag(Eintrag eintrag) {
 		Eintraege.add(eintrag);
 	}
 
-	// Remove an Eintrag
+	/**
+	 * Removing an entry from the observable list.
+	 * @author Simon Fritschi
+	 * @param eintrag
+	 */
 	public void removeEintrag(Eintrag eintrag) {
 		Eintraege.remove(eintrag);
 	}
 
-	// Edit an Eintrag
+	/**
+	 * We need this to make sure the index stays the same after
+	 * editing an entry. (The entry you edited is still on the top
+	 * after editing and saving.)
+	 * @author Simon Fritschi
+	 * @param oldEintrag
+	 * @param newEintrag
+	 */
 	public void editEintrag(Eintrag oldEintrag, Eintrag newEintrag) {
 		int index = Eintraege.indexOf(oldEintrag);
 		Eintraege.set(index, newEintrag);
 	}
 
-	// Save all items
+	/**
+	 * Saving the entries from the observable list.
+	 * @author Simon Fritschi
+	 * @return
+	 */
 	public boolean saveEintraege() {
 		try {
 			Daten.saveAllEintraege(Eintraege);

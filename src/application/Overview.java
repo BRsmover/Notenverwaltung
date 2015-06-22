@@ -17,6 +17,10 @@ import javafx.stage.Stage;
 import models.Eintrag;
 import business.EintragManagement;
 
+/**
+ * In the class Overview we define the tableview and their columns.
+ * @author Benjamin Jenni
+ */
 public class Overview {
 	EintragManagement logik;
 
@@ -44,6 +48,10 @@ public class Overview {
 	@FXML
 	private TableColumn<Eintrag, String> columnDurchschnitt;
 
+	/**
+	 *  In the initialize method we get the data from the singleton into our tableview.
+	 * @author Benjamin Jenni
+	 */
 	@FXML
 	public void initialize() {
 		EintragManagement management = EintragManagement.getInstance();
@@ -58,10 +66,13 @@ public class Overview {
 		tableview.setItems(management.getEintraege());
 	}
 
-	// Open the editing window
+	/**
+	 * In actionEditing we call our editing window if the user click on add/edit.
+	 * For this we need the Editing.fxml
+	 * @author Benjamin Jenni
+	 */
 	public void actionEditing() {
 		try {
-			// Load Editing.fxml
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("Editing.fxml"));
 			BorderPane addLayout = (BorderPane) loader.load();
@@ -89,6 +100,11 @@ public class Overview {
 		}
 	}
 
+	/**
+	 * This action is called if the user clicks the delete button. If there is an 
+	 * error an alert is shown.
+	 * @author Benjamin Jenni
+	 */
 	public void actionDeleting() {
 		Eintrag eintrag = tableview.getSelectionModel().getSelectedItem();
 		if(eintrag != null) {
@@ -109,11 +125,20 @@ public class Overview {
 		}
 	}
 
-	// Close program
+	/**
+	 * This action is called if the user clicks on exit in the menu.
+	 * It simply closes the windows.
+	 * @author Benjamin Jenni
+	 */
 	public void actionClose() {
 		Platform.exit();
 	}
 
+	/**
+	 * If a user clicks on help he will see a popup with this content which 
+	 * will guide him through the application.
+	 * @author Benjamin Jenni
+	 */
 	public void actionHelp() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Hilfe");
@@ -126,6 +151,10 @@ public class Overview {
 		alert.showAndWait();
 	}
 
+	/**
+	 * If a user clicks on about he will see a popup with these informations about our program.
+	 * @author Benjamin Jenni
+	 */
 	public void actionAbout() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Über uns");

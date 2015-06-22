@@ -10,18 +10,26 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * 
+ * This is the main method. It is the beginning of our application.
+ * It's the method that get's called if you start the application.
  * @author Benjamin Jenni
- *
  */
-// Main method
 public class Main extends Application {
-	// Start application
+	/**
+	 * This is the start which launches the application.
+	 * @author Benjamin Jenni
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
 
-	// Define application
+	/**
+	 * The start method is used by JavaFX. In this case it is used to instance the rootlayout
+	 * on which the table is displayed.
+	 * For example we set the title and the icon. We also load our Overview.fxml in this method.
+	 * @author Benjamin Jenni
+	 * @param primarystage - This is the stage on which our GUI is built.
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {

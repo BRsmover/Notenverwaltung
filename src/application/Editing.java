@@ -10,6 +10,11 @@ import javafx.scene.control.TextField;
 import models.Eintrag;
 import business.EintragManagement;
 
+/**
+ * In the editing class we make the GUI for the editing form.
+ * (And in the Editing.fxml)
+ * @author Benjamin Jenni
+ */
 public class Editing {
 	@FXML
 	private TextField vorname;
@@ -26,7 +31,10 @@ public class Editing {
 
 	Eintrag currenteintrag;
 
-	// Test if input is valid
+	/**
+	 * In our initialize method we test if the input in the mark fields is valid.
+	 * @author Benjamin Jenni
+	 */
 	@FXML
 	public void initialize() {
 		note1.focusedProperty().addListener((arg0, oldValue, newValue) -> {
@@ -54,7 +62,14 @@ public class Editing {
 		});
 	}
 
-	// Save button set on action
+	/**
+	 * If the user clicks the save button we automatically save into the csv
+	 * and we refresh the tableview.
+	 * If the user edits an existing entry we display its values in the form.
+	 * @author Benjamin Jenni
+	 * @param event - An actionevent
+	 * @see editEintrag
+	 */
 	@FXML
 	public void actionSave(ActionEvent event) {
 		Eintrag eintrag = new Eintrag();
@@ -96,12 +111,21 @@ public class Editing {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
-	// Cancel button set on action
+	/**
+	 * If a user clicks on the cancel button we close the editing window.
+	 * @author Benjamin Jenni
+	 * @param event
+	 */
 	@FXML
 	public void actionCancel(ActionEvent event) {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
+	/**
+	 * We need this method to set the values into the form if the user
+	 * wants to edit an existing entry.
+	 * @param eintrag
+	 */
 	public void setEintrag(Eintrag eintrag) {
 		vorname.setText(eintrag.getVorname());
 		name.setText(eintrag.getName());

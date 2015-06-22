@@ -10,14 +10,11 @@ import javafx.beans.property.StringProperty;
 
 
 /**
- * 
- * @author Benjamin Jenni
- *
+ * The only object we ever use is Eintrag. This is its class.
+ * @author Benjamin Jenni, Simon Fritschi
  */
 public class Eintrag implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private StringProperty vorname;
 	private StringProperty name;
@@ -26,9 +23,24 @@ public class Eintrag implements Serializable {
 	private DoubleProperty noteZwei;
 	private DoubleProperty noteDrei;
 
+	/**
+	 * A constructor without any parameters.
+	 * @author Benjamin Jenni, Simon Fritschi
+	 */
 	public Eintrag() {
 	}
 
+	/**
+	 * This is our constructor where we give the object already its
+	 * parameters.
+	 * @author Benjamin Jenni, Simon Fritschi
+	 * @param vorname
+	 * @param name
+	 * @param fach
+	 * @param noteEins
+	 * @param noteZwei
+	 * @param noteDrei
+	 */
 	public Eintrag(String vorname, String name, String fach, double noteEins, double noteZwei, double noteDrei) {
 		this.vorname = new SimpleStringProperty(vorname);
 		this.name = new SimpleStringProperty(name);
@@ -38,6 +50,10 @@ public class Eintrag implements Serializable {
 		this.noteDrei = new SimpleDoubleProperty(noteDrei);
 	}
 
+	/**
+	 * In the following code we have the setters and getters for our variables.
+	 * @author Benjamin Jenni, Simon Fritschi
+	 */
 	public DoubleProperty getNoteEinsProperty() {
 		return noteEins;
 	}
@@ -110,6 +126,11 @@ public class Eintrag implements Serializable {
 		this.fach = new SimpleStringProperty(fach);
 	}
 
+	/**
+	 * Here we calculate the average of the marks.
+	 * @author Benjamin Jenni, Simon Fritschi
+	 * @return rounded average value
+	 */
 	public DoubleProperty getDurchschnittProperty() {
 		double noteEins = getNoteEins();
 		double noteZwei = getNoteZwei();
@@ -131,6 +152,14 @@ public class Eintrag implements Serializable {
 		return new SimpleDoubleProperty(round(note / noteCount, 2, BigDecimal.ROUND_HALF_UP));
 	}
 
+	/**
+	 * This method is used to round the average value.
+	 * @author Benjamin Jenni, Simon Fritschi
+	 * @param unrounded
+	 * @param precision
+	 * @param roundingMode
+	 * @return
+	 */
 	private double round(double unrounded, int precision, int roundingMode) {
 	    BigDecimal bd = new BigDecimal(unrounded);
 	    BigDecimal rounded = bd.setScale(precision, roundingMode);
