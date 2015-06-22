@@ -7,8 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import models.Eintrag;
 
 /**
@@ -21,7 +22,7 @@ public class EintragDAO {
 	private static final String EINTRAGE_CSV = "eintrage.csv";
 
 	// Saving to CSV file
-	public boolean saveAllEintraege(ArrayList<Eintrag> eintraege) {
+	public boolean saveAllEintraege(ObservableList<Eintrag> eintraege) {
 		try {
 			File file = new File(EINTRAGE_CSV);
 			file.createNewFile();
@@ -41,11 +42,11 @@ public class EintragDAO {
 		}
 	}
 
-	public ArrayList<Eintrag> getAllEintraege() {
+	public ObservableList<Eintrag> getAllEintraege() {
 		try {
 			File file = new File(EINTRAGE_CSV);
 			file.createNewFile();
-			ArrayList<Eintrag> eintraege = new ArrayList<Eintrag>();
+			ObservableList<Eintrag> eintraege = FXCollections.observableArrayList();
 			FileInputStream inputstream = new FileInputStream(file);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
 			String line = null;
@@ -57,7 +58,7 @@ public class EintragDAO {
 			return eintraege;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ArrayList<Eintrag>();
+			return FXCollections.observableArrayList();
 		}
 	}
 }

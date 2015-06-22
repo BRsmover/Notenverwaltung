@@ -1,7 +1,6 @@
 package application;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -48,8 +47,7 @@ public class Overview {
 	@FXML
 	public void initialize() {
 		EintragManagement management = EintragManagement.getInstance();
-		ArrayList<Eintrag> eintraege = management.getEintraege();
-		ObservableList<Eintrag> observableeintraege = FXCollections.observableArrayList(eintraege);
+		ObservableList<Eintrag> observableeintraege = FXCollections.observableArrayList(management.getEintraege());
 		columnVorname.setCellValueFactory(cellData -> cellData.getValue().getVornameProperty());
 		columnName.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
 		columnFach.setCellValueFactory(cellData -> cellData.getValue().getFachProperty());
@@ -84,28 +82,17 @@ public class Overview {
 			addStage.setScene(addScene);
 			addStage.setResizable(false);
 			addStage.show();
-
-			/*// Just add a few entries while programming
-			EintragManagement management = EintragManagement.getInstance(); // Get instance and load the existing data
-			management.addEintrag(new Eintrag("Simon", "Wächter", "Informatik", 5.7, 5.4, 5.55)); // Add entry
-			management.addEintrag(new Eintrag("Benjamin", "Jenni", "Informatik", 4.7, 4.9, 5.3)); // Add entry
-			management.saveEintraege(); // Save the existing entries + 2 new entries*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	// Close program
-	public void close() {
-		Platform.exit();
-	}
-
-	// Call saveToFile method in Management
-	public void callSaveToFile() {
-		logik.addEintrag(new Eintrag("Peter", "Schwarz", "Justiz", 5.5, 6.0, 5.75));
-	}
-
 	public void callDeleting() {
 		logik.deleting(new Eintrag("Peter", "Schwarz", "Justiz", 5.5, 6.0, 5.75));
+	}
+
+	// Close program
+	public void callClose() {
+		Platform.exit();
 	}
 }

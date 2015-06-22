@@ -1,7 +1,6 @@
 package business;
 
-import java.util.ArrayList;
-
+import javafx.collections.ObservableList;
 import models.Eintrag;
 import persistence.EintragDAO;
 
@@ -15,7 +14,7 @@ public class EintragManagement {
 
 	static EintragManagement Management;
 	EintragDAO Daten;
-	ArrayList<Eintrag> Eintraege;
+	ObservableList<Eintrag> Eintraege;
 
 	// Protected constructor
 	protected EintragManagement() {
@@ -32,7 +31,7 @@ public class EintragManagement {
 	}
 
 	// Get Eintraege
-	public ArrayList<Eintrag> getEintraege() {
+	public ObservableList<Eintrag> getEintraege() {
 		return Daten.getAllEintraege();
 	}
 
@@ -50,11 +49,5 @@ public class EintragManagement {
 	// Save all items
 	public boolean saveEintraege() {
 		return Daten.saveAllEintraege(Eintraege);
-	}
-
-	// Calculate average
-	public double average(double eins, double zwei, double drei) {
-		
-		return 0;
 	}
 }

@@ -12,7 +12,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Datei">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#close" text="Beenden" />
+              <MenuItem mnemonicParsing="false" onAction="#callClose" text="Beenden" />
             </items>
           </Menu>
         </menus>
