@@ -46,7 +46,7 @@ public class EintragManagement {
 		Eintraege.remove(eintrag);
 		return true;
 	}
-	
+
 	// Save all items
 	public boolean saveEintraege() {
 		return Daten.saveAllEintraege(Eintraege);
@@ -54,6 +54,7 @@ public class EintragManagement {
 
 	// Calculate average
 	public double average(double eins, double zwei, double drei) {
+		
 		return 0;
 	}
 }

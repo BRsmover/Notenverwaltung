@@ -7,12 +7,37 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Editing">
+<BorderPane prefHeight="210.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Editing">
+   <bottom>
+      <BorderPane BorderPane.alignment="CENTER">
+         <right>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#actionSave" text="Speichern">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#actionCancel" text="Abbrechen" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </right>
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </BorderPane.margin>
+      </BorderPane>
+   </bottom>
    <center>
-      <GridPane maxHeight="200.0" maxWidth="200.0" BorderPane.alignment="CENTER">
+      <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -23,53 +48,41 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="vorname" />
-            <TextField fx:id="name" GridPane.rowIndex="1" />
-            <TextField fx:id="fach" GridPane.rowIndex="2" />
-            <TextField fx:id="note1" onKeyTyped="#validate" GridPane.rowIndex="3" />
-            <TextField fx:id="note2" GridPane.rowIndex="4" />
-            <TextField fx:id="note3" GridPane.rowIndex="5" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname" GridPane.columnIndex="1">
+            <TextField fx:id="vorname" GridPane.columnIndex="1" />
+            <TextField fx:id="name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="fach" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="note1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="note2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="note3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fach" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fach" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1. Note" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Note 1" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2. Note" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Note 2" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Note 3" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3. Note" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Text>
          </children>
+         <BorderPane.margin>
+            <Insets right="10.0" top="5.0" />
+         </BorderPane.margin>
       </GridPane>
    </center>
-   <bottom>
-      <FlowPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#actionSave" text="Speichern">
-               <FlowPane.margin>
-                  <Insets left="300.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#actionCancel" text="Abbrechen">
-               <FlowPane.margin>
-                  <Insets left="30.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-         </children>
-      </FlowPane>
-   </bottom>
 </BorderPane>

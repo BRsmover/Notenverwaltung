@@ -6,64 +6,55 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.45" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Overview">
+<BorderPane maxHeight="400.0" maxWidth="708.0" minHeight="400.0" minWidth="708.0" prefHeight="400.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Overview">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Datei">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#callEditing" text="Eintrag bearbeiten" />
-                  <MenuItem mnemonicParsing="false" text="Daten in Datei speichern" />
               <MenuItem mnemonicParsing="false" onAction="#close" text="Beenden" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
    </top>
-   <bottom>
-      <FlowPane maxHeight="50.0" maxWidth="601.0" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#callSaveToFile" text="Daten in Datei Speichern">
-               <FlowPane.margin>
-                  <Insets left="10.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#callEditing" text="Hinzufügen/ Ändern">
-               <FlowPane.margin>
-                  <Insets left="145.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Durchschnitt">
-               <FlowPane.margin>
-                  <Insets left="10.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="Löschen">
-               <FlowPane.margin>
-                  <Insets left="10.0" top="10.0" />
-               </FlowPane.margin>
-            </Button>
-         </children>
-      </FlowPane>
-   </bottom>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="323.0" prefWidth="600.0">
-               <children>
-                  <TableView fx:id="tableview" prefHeight="323.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                      <TableColumn fx:id="columnVorname" prefWidth="100.0" text="Vorname" />
-                      <TableColumn fx:id="columnName" prefWidth="100.0" text="Name" />
-                        <TableColumn fx:id="columnFach" prefWidth="100.0" text="Fach" />
-                        <TableColumn fx:id="columnNote1" prefWidth="100.0" text="Note 1" />
-                        <TableColumn fx:id="columnNote2" prefWidth="100.0" text="Note 2" />
-                        <TableColumn fx:id="columnNote3" prefWidth="100.0" text="Note 3" />
-                    </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="323.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableview" prefHeight="323.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="columnVorname" prefWidth="100.0" text="Vorname" />
+                <TableColumn fx:id="columnName" prefWidth="100.0" text="Name" />
+                  <TableColumn fx:id="columnFach" prefWidth="100.0" text="Fach" />
+                  <TableColumn fx:id="columnNote1" prefWidth="100.0" text="Note 1" />
+                  <TableColumn fx:id="columnNote2" prefWidth="100.0" text="Note 2" />
+                  <TableColumn fx:id="columnNote3" prefWidth="100.0" text="Note 3" />
+                  <TableColumn fx:id="columnDurchschnitt" prefWidth="106.0" text="Durchschnitt" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </center>
+   <bottom>
+      <BorderPane BorderPane.alignment="CENTER">
+         <right>
+            <GridPane prefHeight="30.0" prefWidth="274.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#callEditing" text="Hinzufügen/ Ändern" />
+                  <Button mnemonicParsing="false" onAction="#callDeleting" text="Löschen" GridPane.columnIndex="1" />
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </BorderPane.margin>
+            </GridPane>
+         </right>
+      </BorderPane>
+   </bottom>
 </BorderPane>

@@ -1,6 +1,7 @@
 package models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -107,5 +108,33 @@ public class Eintrag implements Serializable {
 
 	public void setFach(String fach) {
 		this.fach = new SimpleStringProperty(fach);
+	}
+
+	public DoubleProperty getDurchschnittProperty() {
+		double noteEins = getNoteEins();
+		double noteZwei = getNoteZwei();
+		double noteDrei = getNoteDrei();
+		double note = 0;
+		int noteCount = 0;
+		if (noteEins > 0) {
+			note += noteEins;
+			noteCount += 1;
+		}
+		if (noteZwei > 0) {
+			note += noteZwei;
+			noteCount += 1;
+		}
+		if (noteDrei > 0) {
+			note += noteDrei;
+			noteCount += 1;
+		}
+		double durchschnitt = note / noteCount;
+		return new SimpleDoubleProperty(round(durchschnitt, 2, BigDecimal.ROUND_HALF_UP));
+	}
+
+	public static double round(double unrounded, int precision, int roundingMode) {
+	    BigDecimal bd = new BigDecimal(unrounded);
+	    BigDecimal rounded = bd.setScale(precision, roundingMode);
+	    return rounded.doubleValue();
 	}
 }

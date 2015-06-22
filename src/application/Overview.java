@@ -23,7 +23,7 @@ public class Overview {
 
 	@FXML
 	TableView<Eintrag> tableview;
-	
+
 	@FXML
 	private TableColumn<Eintrag, String> columnVorname;
 
@@ -43,6 +43,9 @@ public class Overview {
 	private TableColumn<Eintrag, String> columnNote3;
 
 	@FXML
+	private TableColumn<Eintrag, String> columnDurchschnitt;
+
+	@FXML
 	public void initialize() {
 		EintragManagement management = EintragManagement.getInstance();
 		ArrayList<Eintrag> eintraege = management.getEintraege();
@@ -53,6 +56,7 @@ public class Overview {
 		columnNote1.setCellValueFactory(cellData -> cellData.getValue().getNoteEinsProperty().asString());
 		columnNote2.setCellValueFactory(cellData -> cellData.getValue().getNoteZweiProperty().asString());
 		columnNote3.setCellValueFactory(cellData -> cellData.getValue().getNoteDreiProperty().asString());
+		columnDurchschnitt.setCellValueFactory(cellData -> cellData.getValue().getDurchschnittProperty().asString());
 		tableview.setItems(observableeintraege);
 	}
 
@@ -76,15 +80,16 @@ public class Overview {
 			} else {
 				addStage.setTitle("Erstellen");
 			}
-			
+
 			addStage.setScene(addScene);
+			addStage.setResizable(false);
 			addStage.show();
 
-			// Just add a few entries
+			/*// Just add a few entries while programming
 			EintragManagement management = EintragManagement.getInstance(); // Get instance and load the existing data
 			management.addEintrag(new Eintrag("Simon", "Wächter", "Informatik", 5.7, 5.4, 5.55)); // Add entry
-			management.addEintrag(new Eintrag("Benjamin", "Jenni", "Informatik", 5.7, 5.4, 5.55)); // Add entry
-			management.saveEintraege(); // Save the existing entries + 2 new entries
+			management.addEintrag(new Eintrag("Benjamin", "Jenni", "Informatik", 4.7, 4.9, 5.3)); // Add entry
+			management.saveEintraege(); // Save the existing entries + 2 new entries*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -100,9 +105,7 @@ public class Overview {
 		logik.addEintrag(new Eintrag("Peter", "Schwarz", "Justiz", 5.5, 6.0, 5.75));
 	}
 
-	// Call average calculator
-	public double callAverage(double noteEins, double noteZwei, double noteDrei) {
-		
-		return logik.average(noteEins, noteZwei, noteDrei);
+	public void callDeleting() {
+		logik.deleting(new Eintrag("Peter", "Schwarz", "Justiz", 5.5, 6.0, 5.75));
 	}
 }
