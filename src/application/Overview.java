@@ -58,7 +58,7 @@ public class Overview {
 	}
 
 	// Open the editing window
-	public void callEditing() {
+	public void actionEditing() {
 		try {
 			// Load Editing.fxml
 			FXMLLoader loader = new FXMLLoader();
@@ -87,7 +87,7 @@ public class Overview {
 		}
 	}
 
-	public void callDeleting() {
+	public void actionDeleting() {
 		Eintrag eintrag = tableview.getSelectionModel().getSelectedItem();
 		if(eintrag != null)
 		{
@@ -102,7 +102,7 @@ public class Overview {
 				else
 				{
 					management.addEintrag(eintrag);
-					Alert alert = new Alert(AlertType.INFORMATION);
+					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Eintrag löschen");
 					alert.setHeaderText("Eintrag löschen");
 					alert.setContentText("Der angewählte Eintrag konnte nicht gelöscht werden.");
@@ -113,7 +113,7 @@ public class Overview {
 	}
 
 	// Close program
-	public void callClose() {
+	public void actionClose() {
 		Platform.exit();
 	}
 }

@@ -128,11 +128,10 @@ public class Eintrag implements Serializable {
 			note += noteDrei;
 			noteCount += 1;
 		}
-		double durchschnitt = note / noteCount;
-		return new SimpleDoubleProperty(round(durchschnitt, 2, BigDecimal.ROUND_HALF_UP));
+		return new SimpleDoubleProperty(round(note / noteCount, 2, BigDecimal.ROUND_HALF_UP));
 	}
 
-	public static double round(double unrounded, int precision, int roundingMode) {
+	private double round(double unrounded, int precision, int roundingMode) {
 	    BigDecimal bd = new BigDecimal(unrounded);
 	    BigDecimal rounded = bd.setScale(precision, roundingMode);
 	    return rounded.doubleValue();

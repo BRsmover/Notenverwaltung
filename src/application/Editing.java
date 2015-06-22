@@ -87,7 +87,7 @@ public class Editing {
 		if(!management.saveEintraege())
 		{
 			management.addEintrag(eintrag);
-			Alert alert = new Alert(AlertType.INFORMATION);
+			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Eintrag bearbeiten/erstellen");
 			alert.setHeaderText("Eintrag löschen");
 			alert.setContentText("Der angewählte Eintrag konnte nicht bearbeitet/erstellt werden.");

@@ -12,7 +12,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Datei">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#callClose" text="Beenden" />
+              <MenuItem mnemonicParsing="false" onAction="#actionClose" text="Beenden" />
             </items>
           </Menu>
         </menus>
@@ -47,8 +47,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#callEditing" text="Hinzufügen/ Ändern" />
-                  <Button mnemonicParsing="false" onAction="#callDeleting" text="Löschen" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#actionEditing" text="Hinzufügen/ Ändern" />
+                  <Button mnemonicParsing="false" onAction="#actionDeleting" text="Löschen" GridPane.columnIndex="1" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="5.0" top="5.0" />
