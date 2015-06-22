@@ -1,8 +1,11 @@
 package application;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import models.Eintrag;
 import business.EintragManagement;
@@ -20,9 +23,6 @@ public class Editing {
 	private TextField note2;
 	@FXML
 	private TextField note3;
-
-	public Editing() {
-	}
 
 	// Test if input is valid
 	@FXML
@@ -74,8 +74,17 @@ public class Editing {
 		}
 
 		EintragManagement management = EintragManagement.getInstance();
-		management.addEintrag(eintrag);
-		management.saveEintraege();
+		ObservableList<Eintrag> eintraege = management.getEintraege();
+		eintraege.add(eintrag);
+		if(!management.saveEintraege())
+		{
+			management.addEintrag(eintrag);
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Eintrag löschen");
+			alert.setHeaderText("Eintrag löschen");
+			alert.setContentText("Der angewählte Eintrag konnte nicht gelöscht werden.");
+			alert.showAndWait();
+		}
 
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}

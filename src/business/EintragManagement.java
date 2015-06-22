@@ -1,5 +1,6 @@
 package business;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.Eintrag;
 import persistence.EintragDAO;
@@ -13,13 +14,17 @@ import persistence.EintragDAO;
 public class EintragManagement {
 
 	static EintragManagement Management;
-	EintragDAO Daten;
 	ObservableList<Eintrag> Eintraege;
+	EintragDAO Daten;
 
 	// Protected constructor
 	protected EintragManagement() {
 		Daten = new EintragDAO();
-		Eintraege = Daten.getAllEintraege();
+		try {
+			Eintraege = Daten.getAllEintraege();
+		} catch(Exception e) {
+			Eintraege = FXCollections.observableArrayList();
+		}
 	}
 
 	// Get management instance
@@ -32,22 +37,26 @@ public class EintragManagement {
 
 	// Get Eintraege
 	public ObservableList<Eintrag> getEintraege() {
-		return Daten.getAllEintraege();
+		return Eintraege;
 	}
 
-	// Add entry
+	// Add an Eintrag
 	public void addEintrag(Eintrag eintrag) {
 		Eintraege.add(eintrag);
 	}
 
-	// Delete entry
-	public boolean deleting(Eintrag eintrag) {
+	// Remove an Eintrag
+	public void removeEintrag(Eintrag eintrag) {
 		Eintraege.remove(eintrag);
-		return true;
 	}
 
 	// Save all items
 	public boolean saveEintraege() {
-		return Daten.saveAllEintraege(Eintraege);
+		try {
+			Daten.saveAllEintraege(Eintraege);
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 }

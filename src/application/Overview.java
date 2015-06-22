@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
@@ -44,10 +46,11 @@ public class Overview {
 	@FXML
 	private TableColumn<Eintrag, String> columnDurchschnitt;
 
+	ObservableList<Eintrag> observableeintraege;
+
 	@FXML
 	public void initialize() {
 		EintragManagement management = EintragManagement.getInstance();
-		ObservableList<Eintrag> observableeintraege = FXCollections.observableArrayList(management.getEintraege());
 		columnVorname.setCellValueFactory(cellData -> cellData.getValue().getVornameProperty());
 		columnName.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
 		columnFach.setCellValueFactory(cellData -> cellData.getValue().getFachProperty());
@@ -55,6 +58,7 @@ public class Overview {
 		columnNote2.setCellValueFactory(cellData -> cellData.getValue().getNoteZweiProperty().asString());
 		columnNote3.setCellValueFactory(cellData -> cellData.getValue().getNoteDreiProperty().asString());
 		columnDurchschnitt.setCellValueFactory(cellData -> cellData.getValue().getDurchschnittProperty().asString());
+		observableeintraege = FXCollections.observableArrayList(management.getEintraege());
 		tableview.setItems(observableeintraege);
 	}
 
@@ -71,24 +75,40 @@ public class Overview {
 			addStage.getIcons().add(new Image("file:resources/images/logo.png"));
 			addStage.initModality(Modality.APPLICATION_MODAL);
 
-			Eintrag eintrag = tableview.getSelectionModel().getSelectedItem();
-			if(eintrag != null) {
-				// TODO
-				addStage.setTitle("Bearbeiten");
-			} else {
-				addStage.setTitle("Erstellen");
-			}
-
 			addStage.setScene(addScene);
 			addStage.setResizable(false);
 			addStage.show();
+
+			EintragManagement management = EintragManagement.getInstance();
+			tableview.setItems(management.getEintraege());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void callDeleting() {
-		logik.deleting(new Eintrag("Peter", "Schwarz", "Justiz", 5.5, 6.0, 5.75));
+		Eintrag eintrag = tableview.getSelectionModel().getSelectedItem();
+		if(eintrag != null)
+		{
+			if(observableeintraege.contains(eintrag))
+			{
+				EintragManagement management = EintragManagement.getInstance();
+				management.removeEintrag(eintrag);
+				if(management.saveEintraege())
+				{
+					tableview.setItems(management.getEintraege());
+				}
+				else
+				{
+					observableeintraege.add(eintrag);
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Eintrag löschen");
+					alert.setHeaderText("Eintrag löschen");
+					alert.setContentText("Der angewählte Eintrag konnte nicht gelöscht werden.");
+					alert.showAndWait();
+				}
+			}
+		}
 	}
 
 	// Close program
