@@ -84,8 +84,7 @@ public class Editing {
 			eintraege.add(eintrag);
 		}
 
-		if(!management.saveEintraege())
-		{
+		if(!management.saveEintraege()) {
 			management.addEintrag(eintrag);
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Eintrag bearbeiten/erstellen");

@@ -54,6 +54,7 @@ public class Overview {
 		columnNote2.setCellValueFactory(cellData -> cellData.getValue().getNoteZweiProperty().asString());
 		columnNote3.setCellValueFactory(cellData -> cellData.getValue().getNoteDreiProperty().asString());
 		columnDurchschnitt.setCellValueFactory(cellData -> cellData.getValue().getDurchschnittProperty().asString());
+		tableview.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		tableview.setItems(management.getEintraege());
 	}
 
@@ -77,6 +78,7 @@ public class Overview {
 			}
 
 			addStage.setScene(addScene);
+			addStage.setTitle("Bearbeiten/ Erstellen");
 			addStage.setResizable(false);
 			addStage.show();
 
@@ -89,18 +91,13 @@ public class Overview {
 
 	public void actionDeleting() {
 		Eintrag eintrag = tableview.getSelectionModel().getSelectedItem();
-		if(eintrag != null)
-		{
+		if(eintrag != null) {
 			EintragManagement management = EintragManagement.getInstance();
-			if(management.getEintraege().contains(eintrag))
-			{
+			if(management.getEintraege().contains(eintrag)) {
 				management.removeEintrag(eintrag);
-				if(management.saveEintraege())
-				{
+				if(management.saveEintraege()) {
 					tableview.setItems(management.getEintraege());
-				}
-				else
-				{
+				} else {
 					management.addEintrag(eintrag);
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Eintrag löschen");
