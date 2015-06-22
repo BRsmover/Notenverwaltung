@@ -24,6 +24,8 @@ public class Editing {
 	@FXML
 	private TextField note3;
 
+	Eintrag currenteintrag;
+
 	// Test if input is valid
 	@FXML
 	public void initialize() {
@@ -75,14 +77,20 @@ public class Editing {
 
 		EintragManagement management = EintragManagement.getInstance();
 		ObservableList<Eintrag> eintraege = management.getEintraege();
-		eintraege.add(eintrag);
+
+		if(currenteintrag != null) {
+			management.editEintrag(currenteintrag, eintrag);
+		} else {
+			eintraege.add(eintrag);
+		}
+
 		if(!management.saveEintraege())
 		{
 			management.addEintrag(eintrag);
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Eintrag löschen");
+			alert.setTitle("Eintrag bearbeiten/erstellen");
 			alert.setHeaderText("Eintrag löschen");
-			alert.setContentText("Der angewählte Eintrag konnte nicht gelöscht werden.");
+			alert.setContentText("Der angewählte Eintrag konnte nicht bearbeitet/erstellt werden.");
 			alert.showAndWait();
 		}
 
@@ -93,5 +101,15 @@ public class Editing {
 	@FXML
 	public void actionCancel(ActionEvent event) {
 		((Node) (event.getSource())).getScene().getWindow().hide();
+	}
+
+	public void setEintrag(Eintrag eintrag) {
+		vorname.setText(eintrag.getVorname());
+		name.setText(eintrag.getName());
+		fach.setText(eintrag.getFach());
+		note1.setText(Double.toString(eintrag.getNoteEins()));
+		note2.setText(Double.toString(eintrag.getNoteZwei()));
+		note3.setText(Double.toString(eintrag.getNoteDrei()));
+		currenteintrag = eintrag;
 	}
 }

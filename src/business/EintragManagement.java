@@ -50,6 +50,12 @@ public class EintragManagement {
 		Eintraege.remove(eintrag);
 	}
 
+	// Edit an Eintrag
+	public void editEintrag(Eintrag oldEintrag, Eintrag newEintrag) {
+		int index = Eintraege.indexOf(oldEintrag);
+		Eintraege.set(index, newEintrag);
+	}
+
 	// Save all items
 	public boolean saveEintraege() {
 		try {

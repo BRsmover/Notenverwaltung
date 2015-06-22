@@ -3,8 +3,6 @@ package application;
 import java.io.IOException;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -46,8 +44,6 @@ public class Overview {
 	@FXML
 	private TableColumn<Eintrag, String> columnDurchschnitt;
 
-	ObservableList<Eintrag> observableeintraege;
-
 	@FXML
 	public void initialize() {
 		EintragManagement management = EintragManagement.getInstance();
@@ -58,22 +54,27 @@ public class Overview {
 		columnNote2.setCellValueFactory(cellData -> cellData.getValue().getNoteZweiProperty().asString());
 		columnNote3.setCellValueFactory(cellData -> cellData.getValue().getNoteDreiProperty().asString());
 		columnDurchschnitt.setCellValueFactory(cellData -> cellData.getValue().getDurchschnittProperty().asString());
-		observableeintraege = FXCollections.observableArrayList(management.getEintraege());
-		tableview.setItems(observableeintraege);
+		tableview.setItems(management.getEintraege());
 	}
 
 	// Open the editing window
 	public void callEditing() {
 		try {
 			// Load Editing.fxml
-			FXMLLoader loadAdding = new FXMLLoader();
-			loadAdding.setLocation(Main.class.getResource("Editing.fxml"));
-			BorderPane addLayout = (BorderPane) loadAdding.load();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("Editing.fxml"));
+			BorderPane addLayout = (BorderPane) loader.load();
 
 			Scene addScene = new Scene(addLayout);
 			Stage addStage = new Stage();
 			addStage.getIcons().add(new Image("file:resources/images/logo.png"));
 			addStage.initModality(Modality.APPLICATION_MODAL);
+
+			Editing editing = loader.getController();
+			Eintrag eintrag = tableview.getSelectionModel().getSelectedItem();
+			if(eintrag != null) {
+				editing.setEintrag(eintrag);
+			}
 
 			addStage.setScene(addScene);
 			addStage.setResizable(false);
@@ -90,9 +91,9 @@ public class Overview {
 		Eintrag eintrag = tableview.getSelectionModel().getSelectedItem();
 		if(eintrag != null)
 		{
-			if(observableeintraege.contains(eintrag))
+			EintragManagement management = EintragManagement.getInstance();
+			if(management.getEintraege().contains(eintrag))
 			{
-				EintragManagement management = EintragManagement.getInstance();
 				management.removeEintrag(eintrag);
 				if(management.saveEintraege())
 				{
@@ -100,7 +101,7 @@ public class Overview {
 				}
 				else
 				{
-					observableeintraege.add(eintrag);
+					management.addEintrag(eintrag);
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Eintrag löschen");
 					alert.setHeaderText("Eintrag löschen");
