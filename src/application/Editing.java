@@ -39,7 +39,7 @@ public class Editing {
 	public void initialize() {
 		note1.focusedProperty().addListener((arg0, oldValue, newValue) -> {
 			if (!newValue) {
-				if(!note1.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(.0{1,2}){0,1}")){
+				if(!note1.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")){
 					note1.setText("");
 		        }
 		    }
@@ -47,7 +47,7 @@ public class Editing {
 
 		note2.focusedProperty().addListener((arg0, oldValue, newValue) -> {
 			if (!newValue) {
-				if(!note2.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(.0{1,2}){0,1}")){
+				if(!note2.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")){
 					note2.setText("");
 		        }
 		    }
@@ -55,7 +55,7 @@ public class Editing {
 
 		note3.focusedProperty().addListener((arg0, oldValue, newValue) -> {
 			if (!newValue) {
-				if(!note3.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(.0{1,2}){0,1}")){
+				if(!note3.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")){
 					note3.setText("");
 		        }
 		    }
@@ -77,15 +77,15 @@ public class Editing {
 		eintrag.setName(name.getText());
 		eintrag.setFach(fach.getText());
 
-		if (note1.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(.0{1,2}){0,1}")) {
+		if (note1.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")) {
 			double first = Double.parseDouble(note1.getText());
 			eintrag.setNoteEins(first);
 		}
-		if (note2.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(.0{1,2}){0,1}")) {
+		if (note2.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")) {
 			double second = Double.parseDouble(note2.getText());
 			eintrag.setNoteZwei(second);
 		}
-		if (note3.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(.0{1,2}){0,1}")) {
+		if (note3.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")) {
 			double third = Double.parseDouble(note3.getText());
 			eintrag.setNoteDrei(third);
 		}
