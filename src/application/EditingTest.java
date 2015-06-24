@@ -1,28 +1,45 @@
 package application;
 
-import javafx.collections.ObservableList;
-import models.Eintrag;
+import static org.junit.Assert.fail;
+import javafx.event.ActionEvent;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-
-import business.EintragManagement;
-
 /**
- * Testing if an observable list with entries that we get is not null.
- * If it isn't null it's good.
+ * We're testing the method actionSave.
+ * At the moment there's a fail because the method doesn't
+ * receive any data from the fxml textfields.
+ * 
  * @author Benjamin Jenni
  */
 public class EditingTest {
 
+	Editing edit;
+	ActionEvent event;
+
+	@Before
+	public void setUp() throws Exception {
+		edit = new Editing();
+		event = new ActionEvent();
+	}
+
 	@Test
 	public void test() {
-		EintragManagement management = EintragManagement.getInstance();
-		ObservableList<Eintrag> eintragList = management.getEintraege();
-		if (eintragList != null) {
-			System.out.println("There is no value in eintrag!");
-		} else {
-			System.out.println("There is a value in eintrag!");
+		try {
+			edit.actionSave(event);
+			System.out.println("successfull");
+		} catch (Exception e){
+			System.out.println("failed");
+			fail("failed");
+			//e.printStackTrace();
 		}
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		edit = null;
+		event = null;
 	}
 
 }

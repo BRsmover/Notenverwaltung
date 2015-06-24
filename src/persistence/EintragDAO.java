@@ -28,7 +28,6 @@ public class EintragDAO {
 	 * @param eintraege
 	 * @throws Exception
 	 */
-	// Saving to CSV file
 	public void saveAllEintraege(ObservableList<Eintrag> eintraege) throws Exception {
 		File file = new File(EINTRAGE_CSV);
 		file.createNewFile();

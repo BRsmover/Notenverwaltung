@@ -42,7 +42,7 @@ public class Main extends Application {
 			Scene scene = new Scene(rootLayout);
 			// Get icon for application
 			primaryStage.getIcons().add(new Image("file:resources/images/logo.png"));
-			
+
 			// Showing application
 			primaryStage.setTitle("Notenverwaltung");
 			primaryStage.setScene(scene);
